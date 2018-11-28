@@ -4,6 +4,8 @@ namespace DorsetDigital\Elements\CTA\DataObjects;
 
 
 use DorsetDigital\Elements\CTA\Models\CTAElement;
+use gorriecoe\Link\Models\Link;
+use gorriecoe\LinkField\LinkField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
 use SilverStripe\Forms\CheckboxField;
@@ -30,7 +32,8 @@ class CTA extends DataObject
     ];
 
     private static $has_one = [
-        'CTAImage' => Image::class
+        'CTAImage' => Image::class,
+        'Link' => Link::class
     ];
 
     private static $owns = [
@@ -45,50 +48,27 @@ class CTA extends DataObject
         $fields->removeByName('Sort');
 
         $fields->addFieldToTab('Root.Main',
-            TextareaField::create('Title')
-                ->setTitle(_t(__CLASS__ . '.Title', 'Slide Caption'))
+            TextField::create('Title')
+                ->setTitle(_t(__CLASS__ . '.Title', 'Main CTA Title'))
         );
 
         $fields->addFieldToTab('Root.Main',
-            ColorField::create('TextColour')
-                ->setTitle(_t(__CLASS__ . '.TextColour', 'Text Colour')));
-
-        $fields->addFieldToTab('Root.Main',
-            CheckboxField::create('TextDropShadow')
-            ->setTitle(_t(__CLASS__ . '.DropShadow', 'Add text drop shadow'))
+            TextField::create('SubTitle')
+                ->setTitle(_t(__CLASS__ . '.SubTitle', 'CTA Subtitle'))
         );
 
         $fields->addFieldToTab('Root.Main',
-            DropdownField::create('TextSize')
-                ->setTitle(_t(__CLASS__ . '.TextSize', 'Text Size'))
-                ->setSource([
-                    'small' => _t(__CLASS__ . '.Small', 'Small'),
-                    'medium' => _t(__CLASS__ . '.Medium', 'Medium'),
-                    'large' => _t(__CLASS__ . '.Large', 'Large')
-                ]));
-
-        $fields->addFieldToTab('Root.Main',
-            UploadField::create('SlideImage')
+            UploadField::create('CTAImage')
+                ->setTitle(_t(__CLASS__ . '.CTAImage', 'CTA Image'))
                 ->setAllowedFileCategories('image/supported')
-                ->setFolderName('sliders'));
+                ->setFolderName('cta-images'));
 
         $fields->addFieldToTab('Root.Main',
-            DropdownField::create('PositionHorizontal')
-                ->setTitle(_t(__CLASS__ . '.HorizontalPosition', 'Horizontal Position'))
-                ->setSource([
-                    'left' => _t(__CLASS__ . '.Left', 'Left'),
-                    'centre' => _t(__CLASS__ . '.Centre', 'Centre'),
-                    'right' => _t(__CLASS__ . '.Right', 'Right')
-                ]));
-
-        $fields->addFieldToTab('Root.Main',
-            DropdownField::create('PositionVertical')
-                ->setTitle(_t(__CLASS__ . '.VerticalPosition', 'Vertical Position'))
-                ->setSource([
-                    'top' => _t(__CLASS__ . '.Top', 'Top'),
-                    'middle' => _t(__CLASS__ . '.Middle', 'Middle'),
-                    'bottom' => _t(__CLASS__ . '.Bottom', 'Bottom')
-                ]));
+            LinkField::create('Link',
+                _t(__CLASS__ . '.Link', 'Link'),
+                $this
+            )
+        );
 
         return $fields;
     }
