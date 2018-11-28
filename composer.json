@@ -1,0 +1,31 @@
+{
+  "name": "dorsetdigital/silverstripe-element-cta",
+  "description": "Adds large calls to action in an element",
+  "type": "silverstripe-module",
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "silverstripe"
+  ],
+  "authors": [
+    {
+      "name": "Tim Burt - Dorset Digital Ltd",
+      "email": "tim@dorset-digital.net"
+    }
+  ],
+  "require": {
+    "silverstripe/vendor-plugin": "^1.0"
+    "dnadesign/silverstripe-elemental": "^3.0",
+    "symbiote/silverstripe-gridfieldextensions": "^3",
+    "tractorcow/silverstripe-colorpicker": "^4"
+  },
+  "autoload": {
+    "psr-4": {
+      "DorsetDigital\\Elements\\Slider\\": "src/"
+    }
+  },
+  "extra": {
+    "expose": [
+      "client/dist"
+    ]
+  }
+}
