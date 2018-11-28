@@ -21,7 +21,7 @@
   },
   "autoload": {
     "psr-4": {
-      "DorsetDigital\\Elements\\Slider\\": "src/"
+      "DorsetDigital\\Elements\\CTA\\": "src/"
     }
   },
   "extra": {
