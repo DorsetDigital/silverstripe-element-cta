@@ -1,26 +1,36 @@
 <% if $Title && $ShowTitle %>
-    <div class="gallerytitle_holder">
-        <h2 class="gallerytitle">$Title</h2>
+    <div class="ctatitle_holder">
+        <h2 class="ctatitle">$Title</h2>
     </div>
 <% end_if %>
-<div class="row py-4">
-    <% if $Slides.Count > 1 %>
-        <div class="image-slider slider-element-$ID slider-mode-$SliderType">
-            <% loop $Slides %>
-                <div class="slider_slide">
-                    <img src="$SlideImage.URL" alt="$Title"/>
-                    <p class="slider_title vert-$PositionVertical horiz-$PositionHorizontal size-$TextSize<% if $TextDropShadow %> dropshadow<% end_if %>"
-                       style="color: #{$TextColour}">$Title</p>
+<div class="cta-block__holder cta-count-$CTAs.Count">
+    <% loop $CTAs %>
+        <div class="cta-item" style="background-color: #$Up.BackgroundColour">
+            <div class="cta-constrainer">
+                <% if $Link %>
+                <a href="$Link.Link">
+                <% end_if %>
+                <div class="cta-image__holder">
+                    <img src="$CTAImage.URL" alt="$Title"/>
                 </div>
-            <% end_loop %>
+                <% if $Link %>
+                </a>
+                <% end_if %>
+                <div class="cta-text__holder" style="border-top-color: #$Up.TitleColour">
+                    <p class="title" style="color: #$Up.TitleColour">
+                        <% if $Link %>
+                        <a href="$Link.Link">
+                        <% end_if %>
+                        $Title
+                        <% if $Link %>
+                        </a>
+                        <% end_if %>
+                    </p>
+                    <p class="subtitle" style="color: #$Up.SubtitleColour">$SubTitle</p>
+                </div>
+            </div>
         </div>
-    <% else %>
-        <div class="slide-single slider_slide">
-            <% with $Slides.First %>
-                <img src="$SlideImage.URL" alt="$Title"/>
-                <p class="slider_title vert-$PositionVertical horiz-$PositionHorizontal size-$TextSize<% if $TextDropShadow %> dropshadow<% end_if %>"
-                   style="color: #{$TextColour}">$Title</p>
-            <% end_with %>
-        </div>
-    <% end_if %>
+    <% end_loop %>
 </div>
+
+

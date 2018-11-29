@@ -16,8 +16,7 @@
     "silverstripe/vendor-plugin": "^1.0",
     "dnadesign/silverstripe-elemental": "^3.0",
     "symbiote/silverstripe-gridfieldextensions": "^3",
-    "tractorcow/silverstripe-colorpicker": "^4",
-    "gorriecoe/silverstripe-linkfield": "*"
+    "tractorcow/silverstripe-colorpicker": "^4"
   },
   "autoload": {
     "psr-4": {

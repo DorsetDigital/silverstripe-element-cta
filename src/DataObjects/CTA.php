@@ -2,17 +2,15 @@
 
 namespace DorsetDigital\Elements\CTA\DataObjects;
 
-
 use DorsetDigital\Elements\CTA\Models\CTAElement;
-use gorriecoe\Link\Models\Link;
-use gorriecoe\LinkField\LinkField;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\Assets\Image;
-use SilverStripe\Forms\CheckboxField;
-use SilverStripe\Forms\DropdownField;
-use SilverStripe\Forms\TextareaField;
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\TreeDropdownField;
 use SilverStripe\ORM\DataObject;
-use TractorCow\Colorpicker\Forms\ColorField;
+
+
 
 class CTA extends DataObject
 {
@@ -33,7 +31,7 @@ class CTA extends DataObject
 
     private static $has_one = [
         'CTAImage' => Image::class,
-        'Link' => Link::class
+        'Link' => SiteTree::class
     ];
 
     private static $owns = [
@@ -44,6 +42,7 @@ class CTA extends DataObject
 
     public function getCMSFields()
     {
+
         $fields = parent::getCMSFields();
         $fields->removeByName('Sort');
 
@@ -64,9 +63,9 @@ class CTA extends DataObject
                 ->setFolderName('cta-images'));
 
         $fields->addFieldToTab('Root.Main',
-            LinkField::create('Link',
+            TreeDropdownField::create('LinkID',
                 _t(__CLASS__ . '.Link', 'Link'),
-                $this
+                SiteTree::class
             )
         );
 
