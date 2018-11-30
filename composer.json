@@ -1,7 +1,7 @@
 {
   "name": "dorsetdigital/silverstripe-element-cta",
   "description": "Adds large calls to action in an element",
-  "type": "silverstripe-module",
+  "type": "silverstripe-vendormodule",
   "license": "BSD-3-Clause",
   "keywords": [
     "silverstripe"
