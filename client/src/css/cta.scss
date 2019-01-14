@@ -1,6 +1,4 @@
 .cta-block__holder {
-  display: flex;
-  justify-content: space-between;
   margin-top: 1em;
 
   .cta-item {
@@ -46,14 +44,25 @@
     }
   }
 
-  $i: 1;
-  @while $i < 13 {
-    &.cta-count-#{$i} {
-      .cta-item {
-        width: 96%/$i;
-      }
-    }
-    $i: $i+1;
+  .cta-item {
+    width: 96%;
   }
-
 }
+
+@media (min-width: 768px)  {
+  .cta-block__holder {
+    display: flex;
+    justify-content: space-between;
+
+    $i: 1;
+    @while $i < 13 {
+      &.cta-count-#{$i} {
+        .cta-item {
+          width: 96%/$i;
+        }
+      }
+      $i: $i+1;
+    }
+  }
+}
+
