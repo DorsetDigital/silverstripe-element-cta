@@ -45,7 +45,7 @@
   }
 
   .cta-item {
-    width: 96%;
+    width: 100%;
   }
 }
 
@@ -54,7 +54,7 @@
     display: flex;
     justify-content: space-between;
 
-    $i: 1;
+    $i: 2;
     @while $i < 13 {
       &.cta-count-#{$i} {
         .cta-item {
