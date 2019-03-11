@@ -18,6 +18,7 @@ class CTAElement extends BaseElement
     private static $description = 'Calls to action block';
     private static $table_name = 'DorsetDigital_Elements_CTAElement';
     private static $controller_class = CTAController::class;
+    private static $inline_editable = false;
 
     private static $db = [
         'TitleColour' => 'Color',
