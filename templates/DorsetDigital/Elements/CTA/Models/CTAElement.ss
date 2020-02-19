@@ -11,7 +11,7 @@
                 <a href="$Link.Link">
                 <% end_if %>
                 <div class="cta-image__holder">
-                    <img src="$CTAImage.URL" alt="$Title"/>
+                    <img src="$CTAImage.ScaleWidth(550).CropHeight(340).URL" alt="$Title"/>
                 </div>
                 <% if $Link %>
                 </a>

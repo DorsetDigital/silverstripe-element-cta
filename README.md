@@ -1,10 +1,9 @@
-# silverstripe-element-slider
+# silverstripe-element-cta
 
-Add a responsive image slider to a page
+Adds calls to action in an element on a page
 
 # Requirements
 * Silverstripe 4.x
-* bummzack/sortablefile
 * dnadesign/silverstripe-elemental
 
 
