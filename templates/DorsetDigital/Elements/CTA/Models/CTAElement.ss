@@ -27,6 +27,9 @@
                         <% end_if %>
                     </p>
                     <p class="subtitle" style="color: #$Up.SubtitleColour">$SubTitle</p>
+                    <% if $Link && $ButtonText %>
+                     <p class="cta-link-button"><a href="$Link.Link" class="btn btn-primary">$ButtonText</a></p>
+                    <% end_if %>                    
                 </div>
             </div>
         </div>
