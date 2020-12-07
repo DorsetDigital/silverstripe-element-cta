@@ -22,7 +22,8 @@ class CTA extends DataObject
     private static $db = [
         'Title' => 'Varchar(255)',
         'Sort' => 'Int',
-        'SubTitle' => 'Varchar(255)'
+        'SubTitle' => 'Varchar(255)',
+        'ButtonText' => 'Varchar'
     ];
 
     private static $belongs_many_many = [
@@ -45,29 +46,14 @@ class CTA extends DataObject
 
         $fields = parent::getCMSFields();
         $fields->removeByName('Sort');
-
-        $fields->addFieldToTab('Root.Main',
-            TextField::create('Title')
-                ->setTitle(_t(__CLASS__ . '.Title', 'Main CTA Title'))
-        );
-
-        $fields->addFieldToTab('Root.Main',
-            TextField::create('SubTitle')
-                ->setTitle(_t(__CLASS__ . '.SubTitle', 'CTA Subtitle'))
-        );
-
-        $fields->addFieldToTab('Root.Main',
-            UploadField::create('CTAImage')
-                ->setTitle(_t(__CLASS__ . '.CTAImage', 'CTA Image'))
-                ->setAllowedFileCategories('image/supported')
-                ->setFolderName('cta-images'));
-
-        $fields->addFieldToTab('Root.Main',
-            TreeDropdownField::create('LinkID',
-                _t(__CLASS__ . '.Link', 'Link'),
-                SiteTree::class
-            )
-        );
+        $fields->addFieldsToTab('Root.Main', [
+            TextField::create('Title')->setTitle(_t(__CLASS__ . '.Title', 'Main CTA Title')),
+            TextField::create('SubTitle')->setTitle(_t(__CLASS__ . '.SubTitle', 'CTA Subtitle')),
+            UploadField::create('CTAImage')->setTitle(_t(__CLASS__ . '.CTAImage', 'CTA Image'))->setAllowedFileCategories('image/supported')->setFolderName('cta-images'),
+            UploadField::create('CTAImage')->setTitle(_t(__CLASS__ . '.CTAImage', 'CTA Image'))->setAllowedFileCategories('image/supported')->setFolderName('cta-images'),
+            TreeDropdownField::create('LinkID', _t(__CLASS__ . '.Link', 'Link'), SiteTree::class),
+            TextField::create('ButtonText', _t(__CLASS__ . '.ButtonText', 'Button Text'))->setDescription(_t(__CLASS__.'ButtonTextDescription', 'If added, the CTA will show a button to act as an additional link'))
+        ]);
 
         return $fields;
     }
